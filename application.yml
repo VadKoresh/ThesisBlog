@@ -1,0 +1,4 @@
+spring.datasource.url: jdbc:postgresql://ec2-52-213-119-221.eu-west-1.compute.amazonaws.com:5432/d71qkfmhtm4r3a
+spring.datasource.username: hdvyhscjrpdqjj
+spring.datasource.password: fffc27de81277a25911d3d6dd8286801d2d3c2763326a0f5c604663c54e2b9ff
+spring.jpa.hibernate.ddl-auto: create-drop
