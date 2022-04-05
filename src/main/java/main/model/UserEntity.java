@@ -3,29 +3,49 @@ package main.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     private int id;
+
     @NotNull
     @Column(name = "is_moderator")
     private byte isModerator;
+
     @NotNull
     @Column(name = "reg_time")
     private LocalDateTime regTime;
+
     @NotNull
     private String name;
+
     @NotNull
     private String email;
+
     @NotNull
     private String password;
+
     private String code;
+
     private String photo;
+
+    @OneToMany(cascade = CascadeType.ALL
+            , mappedBy = "userId")
+    private List<PostsEntity> postsEntityList;
+
+    @OneToMany(cascade = CascadeType.ALL
+            , mappedBy = "userId")
+    private List<PostVotesEntity> postVotesEntityList;
+
+    @OneToMany(cascade = CascadeType.ALL
+            , mappedBy = "userId")
+    private List<PostCommentsEntity> commentsEntityList;
 
     public int getId() {
         return id;
@@ -89,5 +109,29 @@ public class UserEntity {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public List<PostsEntity> getPostsEntityList() {
+        return postsEntityList;
+    }
+
+    public void setPostsEntityList(List<PostsEntity> postsEntityList) {
+        this.postsEntityList = postsEntityList;
+    }
+
+    public List<PostVotesEntity> getPostVotesEntityList() {
+        return postVotesEntityList;
+    }
+
+    public void setPostVotesEntityList(List<PostVotesEntity> postVotesEntityList) {
+        this.postVotesEntityList = postVotesEntityList;
+    }
+
+    public List<PostCommentsEntity> getCommentsEntityList() {
+        return commentsEntityList;
+    }
+
+    public void setCommentsEntityList(List<PostCommentsEntity> commentsEntityList) {
+        this.commentsEntityList = commentsEntityList;
     }
 }

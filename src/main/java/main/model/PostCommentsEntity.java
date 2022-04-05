@@ -10,20 +10,29 @@ public class PostCommentsEntity {
 
     @NotNull
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private PostCommentsEntity parentId;
-    @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
-    private PostsEntity postId;
-    @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
-    private UserEntity userId;
+
     @NotNull
     private LocalDateTime time;
+
     @NotNull
     private String text;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private PostCommentsEntity parentId;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private PostsEntity postId;
+
+    @NotNull
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private UserEntity userId;
+
 
     public int getId() {
         return id;

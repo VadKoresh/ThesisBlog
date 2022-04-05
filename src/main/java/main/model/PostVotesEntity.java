@@ -10,18 +10,24 @@ public class PostVotesEntity {
 
     @Id
     @NotNull
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
-    private UserEntity userId;
-    @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
-    private PostsEntity postId;
+
     @NotNull
     private LocalDateTime time;
+
     @NotNull
     private byte value;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private UserEntity userId;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private PostsEntity postId;
 
     public int getId() {
         return id;
