@@ -11,6 +11,7 @@ public class TagsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
+    @Column(name = "tag_id")
     private int id;
 
     @NotNull

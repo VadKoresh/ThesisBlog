@@ -10,7 +10,8 @@ public class PostVotesEntity {
 
     @Id
     @NotNull
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "post_vote_id")
     private int id;
 
     @NotNull
@@ -21,12 +22,12 @@ public class PostVotesEntity {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
     private UserEntity userId;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "post_id")
     private PostsEntity postId;
 
     public int getId() {

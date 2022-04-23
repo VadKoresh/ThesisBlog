@@ -5,12 +5,13 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "captch_codes")
+@Table(name = "captcha_codes")
 public class CaptchaCodesEntity {
 
     @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "captcha_code_id")
     private int id;
     @NotNull
     private LocalDateTime time;

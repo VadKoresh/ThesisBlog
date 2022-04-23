@@ -12,6 +12,7 @@ public class PostsEntity {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "post_id")
     private int id;
 
     @NotNull
@@ -40,7 +41,7 @@ public class PostsEntity {
     private int viewCount;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
     @NotNull
     private UserEntity userId;
 

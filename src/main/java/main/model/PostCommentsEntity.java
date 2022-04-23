@@ -11,6 +11,7 @@ public class PostCommentsEntity {
     @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "post_comment_id")
     private int id;
 
     @NotNull
@@ -19,18 +20,17 @@ public class PostCommentsEntity {
     @NotNull
     private String text;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
-    private PostCommentsEntity parentId;
+    @Column(name = "parent_id")
+    private int parentId;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "post_id")
     private PostsEntity postId;
 
     @NotNull
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
     private UserEntity userId;
 
 
@@ -42,11 +42,11 @@ public class PostCommentsEntity {
         this.id = id;
     }
 
-    public PostCommentsEntity getParentId() {
+    public int getParentId() {
         return parentId;
     }
 
-    public void setParentId(PostCommentsEntity parentId) {
+    public void setParentId(int parentId) {
         this.parentId = parentId;
     }
 
