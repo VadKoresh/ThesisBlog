@@ -9,12 +9,16 @@ public class GlobalSettingsEntity {
 
     @NotNull
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "global_setting_id")
     private int id;
+
     @NotNull
     private String code;
+
     @NotNull
     private String name;
+
     @NotNull
     private String value;
 

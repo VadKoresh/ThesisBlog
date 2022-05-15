@@ -3,6 +3,7 @@ package main.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "post_votes")
@@ -11,17 +12,24 @@ public class PostVotesEntity {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "post_vote_id")
     private int id;
+
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
-    private UserEntity userId;
-    @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
-    private PostsEntity postId;
-    @NotNull
-    private LocalDateTime time;
+    private Date time;
+
     @NotNull
     private byte value;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity userId;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private PostsEntity postId;
 
     public int getId() {
         return id;
@@ -47,11 +55,11 @@ public class PostVotesEntity {
         this.postId = postId;
     }
 
-    public LocalDateTime getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

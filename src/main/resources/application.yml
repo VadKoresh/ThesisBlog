@@ -1,0 +1,19 @@
+#Подлючение к боевой базе данных
+#spring.datasource.url: jdbc:postgresql://ec2-52-213-119-221.eu-west-1.compute.amazonaws.com:5432/d71qkfmhtm4r3a
+#spring.datasource.username: hdvyhscjrpdqjj
+#spring.datasource.password: fffc27de81277a25911d3d6dd8286801d2d3c2763326a0f5c604663c54e2b9ff
+
+#Подлючение к тестовой базе данной (для проработки теорий)
+spring.datasource.url: jdbc:postgresql://ec2-52-212-228-71.eu-west-1.compute.amazonaws.com:5432/d2fepmbkep5lmp
+spring.datasource.username: mcwdveehsahdop
+spring.datasource.password: 768c6abfb92f84509b72d3fe9306df4f0a41d5be0444d35ba447ce2e04075b3c
+
+spring.jpa.hibernate.ddl-auto: none
+spring.jpa.show-sql: false
+
+blog.title: "KovPub"
+blog.subtitle: "Рассказы разработчиков"
+blog.phone: "+7-999-970-92-26"
+blog.email: "evilgod-2@mail.ru"
+blog.copyright: "Корешков Вадим"
+blog.copyrightFrom: "2022"

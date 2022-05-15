@@ -3,17 +3,19 @@ package main.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
-@Table(name = "captch_codes")
+@Table(name = "captcha_codes")
 public class CaptchaCodesEntity {
 
     @NotNull
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "captcha_code_id")
     private int id;
     @NotNull
-    private LocalDateTime time;
+    private Date time;
     @NotNull
     private String code;
     @NotNull
@@ -28,11 +30,11 @@ public class CaptchaCodesEntity {
         this.id = id;
     }
 
-    public LocalDateTime getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

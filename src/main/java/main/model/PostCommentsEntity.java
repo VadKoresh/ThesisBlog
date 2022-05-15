@@ -3,6 +3,7 @@ package main.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "post_comments")
@@ -10,20 +11,29 @@ public class PostCommentsEntity {
 
     @NotNull
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "post_comment_id")
     private int id;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private PostCommentsEntity parentId;
+
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
-    private PostsEntity postId;
-    @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
-    private UserEntity userId;
-    @NotNull
-    private LocalDateTime time;
+    private Date time;
+
     @NotNull
     private String text;
+
+    @Column(name = "parent_id")
+    private Integer parentId;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private PostsEntity postId;
+
+    @NotNull
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private UserEntity userId;
+
 
     public int getId() {
         return id;
@@ -33,11 +43,11 @@ public class PostCommentsEntity {
         this.id = id;
     }
 
-    public PostCommentsEntity getParentId() {
+    public int getParentId() {
         return parentId;
     }
 
-    public void setParentId(PostCommentsEntity parentId) {
+    public void setParentId(int parentId) {
         this.parentId = parentId;
     }
 
@@ -57,11 +67,11 @@ public class PostCommentsEntity {
         this.userId = userId;
     }
 
-    public LocalDateTime getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
