@@ -20,8 +20,8 @@ public class TagsEntity {
     @ManyToMany
     @JoinTable(
             name = "tag2post"
-            , joinColumns = @JoinColumn(name = "post_id")
-            , inverseJoinColumns = @JoinColumn(name = "tag_id")
+            , joinColumns = @JoinColumn(name = "tag_id")
+            , inverseJoinColumns = @JoinColumn(name = "post_id")
     )
     private List<PostsEntity> postsEntityList;
 

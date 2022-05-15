@@ -3,6 +3,7 @@ package main.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "post_votes")
@@ -15,7 +16,7 @@ public class PostVotesEntity {
     private int id;
 
     @NotNull
-    private LocalDateTime time;
+    private Date time;
 
     @NotNull
     private byte value;
@@ -54,11 +55,11 @@ public class PostVotesEntity {
         this.postId = postId;
     }
 
-    public LocalDateTime getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

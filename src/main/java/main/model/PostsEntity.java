@@ -2,7 +2,7 @@ package main.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,10 +25,10 @@ public class PostsEntity {
     private ModerationStatus moderationStatus;
 
     @Column(name = "moderator_id")
-    private int moderatorId;
+    private Integer moderatorId;
 
     @NotNull
-    private LocalDateTime time;
+    private Date time;
 
     @NotNull
     private String title;
@@ -52,8 +52,8 @@ public class PostsEntity {
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "tag2post"
-            , joinColumns = @JoinColumn(name = "tag_id")
-            , inverseJoinColumns = @JoinColumn(name = "post_id")
+            , joinColumns = @JoinColumn(name = "post_id")
+            , inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     private List<TagsEntity> tagsEntityList;
 
@@ -101,11 +101,11 @@ public class PostsEntity {
         this.userId = userId;
     }
 
-    public LocalDateTime getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

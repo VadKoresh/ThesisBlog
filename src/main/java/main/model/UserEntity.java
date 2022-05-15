@@ -2,7 +2,7 @@ package main.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -21,7 +21,7 @@ public class UserEntity {
 
     @NotNull
     @Column(name = "reg_time")
-    private LocalDateTime regTime;
+    private Date regTime;
 
     @NotNull
     private String name;
@@ -64,11 +64,11 @@ public class UserEntity {
         this.isModerator = isModerator;
     }
 
-    public LocalDateTime getRegTime() {
+    public Date getRegTime() {
         return regTime;
     }
 
-    public void setRegTime(LocalDateTime regTime) {
+    public void setRegTime(Date regTime) {
         this.regTime = regTime;
     }
 
